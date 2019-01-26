@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    Rigidbody2D characterRigidBody;
+    public Rigidbody2D characterRigidBody;
     Vector2 velocity;
 
     // Start is called before the first frame update
