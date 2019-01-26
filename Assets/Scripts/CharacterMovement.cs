@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public Rigidbody2D characterRigidBody;
+    public float speed = 3f;
     Vector2 velocity;
 
     // Start is called before the first frame update
@@ -17,42 +18,54 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.DownArrow))
         {
             velocity = characterRigidBody.velocity;
             velocity.y = 0f;
             characterRigidBody.velocity = velocity;
             //Yes, apparently this whole step is necessary.
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKey(KeyCode.UpArrow))
         {
             velocity = characterRigidBody.velocity;
-            velocity.y = 3f;
+            velocity.y = speed;
             characterRigidBody.velocity = velocity;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             velocity = characterRigidBody.velocity;
-            velocity.y = -3f;
+            velocity.y = -speed;
+            characterRigidBody.velocity = velocity;
+        }
+        else
+        {
+            velocity = characterRigidBody.velocity;
+            velocity.y = 0f;
             characterRigidBody.velocity = velocity;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
         {
             velocity = characterRigidBody.velocity;
             velocity.x = 0f;
             characterRigidBody.velocity = velocity;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             velocity = characterRigidBody.velocity;
-            velocity.x = 3f;
+            velocity.x = speed;
             characterRigidBody.velocity = velocity;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             velocity = characterRigidBody.velocity;
-            velocity.x = -3f;
+            velocity.x = -speed;
+            characterRigidBody.velocity = velocity;
+        }
+        else
+        {
+            velocity = characterRigidBody.velocity;
+            velocity.x = 0f;
             characterRigidBody.velocity = velocity;
         }
     }
