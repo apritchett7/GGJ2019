@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviour
     public GameObject player;
     public int maxHealth;
     public int currentHealth;
+    public int healthIncreaseAmount;
+    public bool fullyHealOnMaxHealthIncrease;
     
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,19 @@ public class PlayerManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(player);
+        }
+    }
+
+    public void increaseMaximumHealth()
+    {
+        maxHealth += healthIncreaseAmount;
+        if (fullyHealOnMaxHealthIncrease)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth += healthIncreaseAmount;
         }
     }
 }
