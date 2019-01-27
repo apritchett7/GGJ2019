@@ -11,8 +11,11 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject startingRoom;
 
+    public GameObject frontOfHouse;
+
     private BoxCollider2D startingRoomCollider;
     private BoxCollider2D playerCollider;
+    private BoxCollider2D frontHouseCollider;
 
     public int maxHealth;
     public int currentHealth;
@@ -36,6 +39,7 @@ public class PlayerManager : MonoBehaviour
 
         startingRoomCollider = startingRoom.GetComponent<BoxCollider2D>();
         playerCollider = player.GetComponent<BoxCollider2D>();
+        frontHouseCollider = frontOfHouse.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -48,6 +52,12 @@ public class PlayerManager : MonoBehaviour
         {
             isPlayerInSafeRoom = false;
         }
+
+        if (frontHouseCollider.Distance(playerCollider).isOverlapped)
+        {
+            currentHealth = maxHealth;
+        }
+
         if (currentHealth <= 0)
         {
             Destroy(player);
