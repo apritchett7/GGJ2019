@@ -7,12 +7,14 @@ public class CharacterMovement : MonoBehaviour
     public Rigidbody2D characterRigidBody;
     public float speed = 3f;
     Vector2 velocity;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         characterRigidBody.velocity = new Vector2(0,0);
         velocity = characterRigidBody.velocity;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -67,6 +69,14 @@ public class CharacterMovement : MonoBehaviour
             velocity = characterRigidBody.velocity;
             velocity.x = 0f;
             characterRigidBody.velocity = velocity;
+        }
+
+        //Update animation triggers
+        anim.SetFloat("velocityX", velocity.x);
+        anim.SetFloat("velocityY", velocity.y);
+        if (velocity.x == 0f && velocity.y == 0f)
+        {
+            anim.SetTrigger("playerIdle");
         }
     }
 }
