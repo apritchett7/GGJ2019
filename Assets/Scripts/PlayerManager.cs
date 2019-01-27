@@ -9,12 +9,19 @@ public class PlayerManager : MonoBehaviour
     public int currentHealth;
     public int healthIncreaseAmount;
     public bool fullyHealOnMaxHealthIncrease;
+
+    public bool isPlayerInSafeRoom;
+
+    public int framesUntilHurt;
+
+    private int frames;
     
     // Start is called before the first frame update
     void Start()
     {
         maxHealth = 100;
         currentHealth = maxHealth;
+        isPlayerInSafeRoom = true;
     }
 
     // Update is called once per frame
@@ -23,6 +30,12 @@ public class PlayerManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(player);
+        }
+
+        if (framesUntilHurt < frames)
+        {
+            frames = 0;
+            currentHealth--;
         }
     }
 
