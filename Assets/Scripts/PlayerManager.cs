@@ -86,6 +86,6 @@ public class PlayerManager : MonoBehaviour
         {
             currentHealth += healthIncreaseAmount;
         }
-        slider.gameObject.transform.localScale += new Vector3(0.1f, 0.0f, 0.0f);
+        slider.gameObject.transform.localScale += new Vector3(0.25f, 0.0f, 0.0f);
     }
 }
