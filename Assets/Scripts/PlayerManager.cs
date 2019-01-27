@@ -27,12 +27,15 @@ public class PlayerManager : MonoBehaviour
     public int framesUntilHurt;
 
     private int frames;
+
+    private bool gameBeaten;
     
     // Start is called before the first frame update
     void Start()
     {
         maxHealth = 100;
         currentHealth = maxHealth;
+        gameBeaten = false;
 
         slider.maxValue = maxHealth;
         slider.value = currentHealth;
@@ -45,7 +48,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startingRoomCollider.Distance(playerCollider).isOverlapped)
+        if (gameBeaten || startingRoomCollider.Distance(playerCollider).isOverlapped)
         {
             isPlayerInSafeRoom = true;
         } else
@@ -87,5 +90,10 @@ public class PlayerManager : MonoBehaviour
             currentHealth += healthIncreaseAmount;
         }
         slider.gameObject.transform.localScale += new Vector3(0.25f, 0.0f, 0.0f);
+    }
+
+    public void beatGame()
+    {
+        gameBeaten = true;
     }
 }
