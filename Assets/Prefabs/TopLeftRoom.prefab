@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1161537011834820398}
   - component: {fileID: 1161537011834820396}
   - component: {fileID: 1161537011834820399}
+  - component: {fileID: 9068161979670760067}
   m_Layer: 0
   m_Name: TopLeftColliders
   m_TagString: Untagged
@@ -14104,6 +14105,20 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!19719996 &9068161979670760067
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161537011834820385}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
 --- !u!1 &1161537011929406213
 GameObject:
   m_ObjectHideFlags: 0
