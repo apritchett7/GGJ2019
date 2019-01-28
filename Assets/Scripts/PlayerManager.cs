@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject frontOfHouse;
 
+    public Animator anim;
+
     private BoxCollider2D startingRoomCollider;
     private BoxCollider2D playerCollider;
     private BoxCollider2D frontHouseCollider;
@@ -43,6 +45,8 @@ public class PlayerManager : MonoBehaviour
         startingRoomCollider = startingRoom.GetComponent<BoxCollider2D>();
         playerCollider = player.GetComponent<BoxCollider2D>();
         frontHouseCollider = frontOfHouse.GetComponent<BoxCollider2D>();
+
+        anim.SetBool("explosion", false);
     }
 
     // Update is called once per frame
@@ -63,7 +67,11 @@ public class PlayerManager : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(player);
+            anim.SetBool("explosion", true);
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Game Over"))
+            {
+                Destroy(player);
+            }
         }
         if (!isPlayerInSafeRoom)
         {
